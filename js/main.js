@@ -8,6 +8,8 @@ const footerYear = document.querySelector('.footer__year');
 const handleNav = () => {
 	nav.classList.toggle('nav--active');
 
+	navBtnBars.classList.remove('black-bars-color')
+
 	allNavItems.forEach((item) => {
 		item.addEventListener('click', () => {
 			nav.classList.remove('nav--active');
@@ -26,11 +28,27 @@ const handleNavItemsAnimation = () => {
 		delayTime++;
 	});
 };
+const handleObserver = () => {
+	const currentSection = window.scrollY;
+
+	allSections.forEach((section) => {
+		
+		if (section.classList.contains('white-section') &&
+			section.offsetTop <= currentSection + 60) {
+navBtnBars.classList.add('black-bars-color')
+		} else if
+		(!section.classList.contains('white-section') &&
+			section.offsetTop <= currentSection + 60) {
+				navBtnBars.classList.remove('black-bars-color')
+			}
+	});
+};
 
 const handleCurrentYear = () => {
 	let year = new Date().getFullYear();
 	footerYear.innerText = year;
 };
-console.log(handleCurrentYear)
+
 handleCurrentYear();
 navBtn.addEventListener('click', handleNav);
+window.addEventListener('scroll',handleObserver)
