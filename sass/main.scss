@@ -17,6 +17,15 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 1.6rem;
 }
+
+
+.black-bars-color,
+.black-bars-color::after
+.black-bars-color::before{
+	background-color: colors.$dark;
+
+}
+
 //nav
 .burger-btn {
 	position: fixed;
